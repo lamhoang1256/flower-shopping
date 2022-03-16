@@ -6,12 +6,16 @@ import { Product } from "./Pages/Product/Product";
 import { Detail } from "./Pages/Detail/Detail";
 import { Cart } from "./Pages/Cart/Cart";
 import { Profile } from "./Pages/Profile/Profile";
+import { Header } from "./Components/Header/Header";
 
 import "./Sass/app.scss";
+import { Footer } from "./Components/Footer/Footer";
 
 function App() {
   return (
     <Router>
+      <Header></Header>
+      {/* MAIN*/}
       <Routes>
         <Route path='/' element={<Home></Home>} exact></Route>
         <Route path='/login' element={<Login></Login>} exact></Route>
@@ -21,6 +25,7 @@ function App() {
         <Route path='/cart' element={<Cart></Cart>} exact></Route>
         <Route path='/profile' element={<Profile></Profile>} exact></Route>
       </Routes>
+      <Footer></Footer>
     </Router>
   );
 }

@@ -1,0 +1,90 @@
+@import "../../Sass/variable";
+.header {
+  &__container {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__logo {
+    font-size: 3rem;
+    color: $pink-color;
+    font-weight: 600;
+    font-style: italic;
+    cursor: pointer;
+  }
+  .navbar {
+    display: flex;
+    gap: 50px;
+    &__link {
+      color: #000;
+      font-weight: 500;
+      &.active {
+        color: $pink-color;
+      }
+    }
+    @media screen and (max-width: 1023.98px) {
+      position: fixed;
+      z-index: 10;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100vh;
+      background-color: #fff;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 80px;
+      font-size: 2rem;
+      transition: all 0.3s linear;
+      transform: translateX(100%);
+      &.show {
+        transform: translateX(0);
+      }
+    }
+  }
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0 40px;
+    ion-icon {
+      font-size: 2.4rem;
+      cursor: pointer;
+    }
+    @media screen and (max-width: 767.98px) {
+      gap: 0 20px;
+    }
+  }
+  &__cart {
+    position: relative;
+    &-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 100rem;
+      background-color: $pink-color;
+      color: #fff;
+      font-size: 1.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &__toggle {
+    display: none;
+    @media screen and (max-width: 1023.98px) {
+      display: block;
+    }
+    &-close {
+      display: none;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 3rem;
+      @media screen and (max-width: 1023.98px) {
+        display: block;
+      }
+    }
+  }
+}
