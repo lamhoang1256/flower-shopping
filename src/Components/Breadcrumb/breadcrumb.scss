@@ -1,0 +1,17 @@
+@import "../../Sass/variable";
+.breadcrumb {
+  padding: 40px 0;
+  background-color: $sky-color;
+  &__page {
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+  }
+  &__path {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    ion-icon {
+      font-size: 1.4rem;
+    }
+  }
+}

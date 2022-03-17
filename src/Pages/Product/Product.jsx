@@ -1,22 +1,12 @@
 import React from "react";
+import { Breadcrumb } from "../../Components/Breadcrumb/Breadcrumb";
 import "./product.scss";
 
 export const Product = () => {
   return (
     <div className='product'>
       {/* PRODUCT - BREADCRUMB */}
-      <div className='breadcrumb'>
-        <div className='container'>
-          <div className='breadcrumb__page'>All Product</div>
-          <div className='breadcrumb__path'>
-            <div className='text-gray'>Home</div>
-            <div>
-              <ion-icon name='chevron-forward-outline'></ion-icon>
-            </div>
-            Product
-          </div>
-        </div>
-      </div>
+      <Breadcrumb page={"All Product"} path={"Product"}></Breadcrumb>
       <div className='container'>
         <div className='product__container'>
           {/* PRODUCT - MAIN */}
