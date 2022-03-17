@@ -21,7 +21,7 @@ function App() {
         <Route path='/login' element={<Login></Login>} exact></Route>
         <Route path='/register' element={<Register></Register>} exact></Route>
         <Route path='/product' element={<Product></Product>} exact></Route>
-        <Route path='/detail' element={<Detail></Detail>} exact></Route>
+        <Route path='/product/:id' element={<Detail></Detail>}></Route>
         <Route path='/cart' element={<Cart></Cart>} exact></Route>
         <Route path='/profile' element={<Profile></Profile>} exact></Route>
       </Routes>

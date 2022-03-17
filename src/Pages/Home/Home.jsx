@@ -84,7 +84,6 @@ export const Home = () => {
           </div>
         </div>
       </section>
-
       {/* HOME - SUBSCRIBE */}
       <section className='subscribe'>
         <div className='container'>
