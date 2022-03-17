@@ -7,4 +7,9 @@ Phase
 ### 16/03/2022
 
 - Build Header, Footer Component
-- Completed Home Page
+- Completed UI Home Page
+
+### 17/03/2022
+
+- Build Breadcrumb Componet
+- Completed UI Product, Detail, Cart, Profile Page

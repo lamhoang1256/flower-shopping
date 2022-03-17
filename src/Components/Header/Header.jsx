@@ -43,8 +43,8 @@ export const Header = () => {
               </NavLink>
             </li>
             <li className='navbar__item'>
-              <NavLink to='/contact' className='navbar__link'>
-                Contact
+              <NavLink to='/profile' className='navbar__link'>
+                Profile
               </NavLink>
             </li>
           </ul>
