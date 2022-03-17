@@ -58,7 +58,7 @@ export const Header = () => {
               <div className='header__cart-count'>2</div>
             </Link>
             <div className='header__user'>
-              <button className='header__sign-in button__primary'>SIGN IN</button>
+              <button className='header__sign-in button button__primary'>SIGN IN</button>
             </div>
             <div className='header__toggle' onClick={handleShowNavbar}>
               <ion-icon name='menu-outline'></ion-icon>

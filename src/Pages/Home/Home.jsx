@@ -15,7 +15,7 @@ export const Home = () => {
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores veritatis ad
               blanditiis molestias sunt aspernatur.
             </p>
-            <button className='home__button button__primary'>Shop Now</button>
+            <button className='home__button button button__primary'>Shop Now</button>
           </div>
         </div>
       </section>

@@ -30,7 +30,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -42,7 +42,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -54,7 +54,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -66,7 +66,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -78,7 +78,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -90,7 +90,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -102,7 +102,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -138,7 +138,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -150,7 +150,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
@@ -162,7 +162,7 @@ export const Product = () => {
                   <h3 className='product__name'>Rose Flower</h3>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
-                    <button className='product__buy button__primary'>Add to cart</button>
+                    <button className='product__buy button button__primary'>Add to cart</button>
                   </div>
                 </div>
               </div>
