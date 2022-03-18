@@ -4,7 +4,7 @@ import "./header.scss";
 
 export const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   //toggle navbar menu
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
