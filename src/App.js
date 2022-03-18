@@ -21,15 +21,15 @@ function App() {
       {/* MAIN*/}
       <Routes>
         <Route path='/' element={<Home></Home>} exact></Route>
-        <Route path='/login' element={<Login></Login>} exact></Route>
-        <Route path='/register' element={<Register></Register>} exact></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/product/:id' element={<Detail></Detail>}></Route>
-        <Route path='/product' element={<Product></Product>} exact></Route>
-        <Route path='/cart' element={<Cart></Cart>} exact></Route>
-        <Route path='/profile' element={<Profile></Profile>} exact></Route>
-        <Route path='/shipping' element={<Shipping></Shipping>} exact></Route>
-        <Route path='/checkout' element={<Checkout></Checkout>} exact></Route>
-        <Route path='/order' element={<Order></Order>} exact></Route>
+        <Route path='/product' element={<Product></Product>}></Route>
+        <Route path='/cart' element={<Cart></Cart>}></Route>
+        <Route path='/profile' element={<Profile></Profile>}></Route>
+        <Route path='/shipping' element={<Shipping></Shipping>}></Route>
+        <Route path='/checkout' element={<Checkout></Checkout>}></Route>
+        <Route path='/order' element={<Order></Order>}></Route>
       </Routes>
       <Footer></Footer>
     </Router>
