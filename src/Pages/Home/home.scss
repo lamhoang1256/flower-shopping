@@ -105,7 +105,7 @@
   background-color: #eeebee;
   background-position: center;
   &__container {
-    height: 460px;
+    min-height: 460px;
     display: flex;
     justify-content: space-between;
     align-items: center;
