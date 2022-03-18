@@ -12,6 +12,7 @@ import { Footer } from "./Components/Footer/Footer";
 
 import "./Sass/app.scss";
 import { Shipping } from "./Pages/Shipping/Shipping";
+import { Order } from "./Pages/Order/Order";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/profile' element={<Profile></Profile>} exact></Route>
         <Route path='/shipping' element={<Shipping></Shipping>} exact></Route>
         <Route path='/checkout' element={<Checkout></Checkout>} exact></Route>
+        <Route path='/order' element={<Order></Order>} exact></Route>
       </Routes>
       <Footer></Footer>
     </Router>
