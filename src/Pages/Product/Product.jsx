@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Breadcrumb } from "../../Components/Breadcrumb/Breadcrumb";
 import "./product.scss";
 
@@ -13,11 +14,13 @@ export const Product = () => {
           <div className='product__main'>
             <div className='product__list'>
               <div className='product__item'>
-                <div className='product__thumb'>
+                <Link to='/product/1' className='product__thumb'>
                   <img src='./assets/images/img-1.jpg' alt='' />
-                </div>
+                </Link>
                 <div className='product__info'>
-                  <h3 className='product__name'>Rose Flower</h3>
+                  <Link to='/product/1'>
+                    <h3 className='product__name'>Rose Flower</h3>
+                  </Link>
                   <div className='product__bottom'>
                     <div className='product__price'>$12</div>
                     <button className='product__buy button button__primary'>Add to cart</button>
