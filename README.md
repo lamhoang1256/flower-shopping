@@ -13,3 +13,7 @@ Phase
 
 - Build Breadcrumb Componet
 - Completed UI Product, Detail, Cart, Profile Page
+
+### 18/03/2022
+
+- Completed UI Shipping Page
