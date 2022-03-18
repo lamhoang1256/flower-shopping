@@ -4,6 +4,7 @@ import "./header.scss";
 
 export const Header = () => {
   const [showNavbar, setShowNavbar] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   //toggle navbar menu
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
@@ -58,7 +59,18 @@ export const Header = () => {
               <div className='header__cart-count'>2</div>
             </Link>
             <div className='header__user'>
-              <button className='header__sign-in button button__primary'>SIGN IN</button>
+              {isLogin ? (
+                <Link to='/login'>
+                  <button className='header__sign-in button button__primary'>SIGN IN</button>
+                </Link>
+              ) : (
+                <Link to='/profile'>
+                  <img
+                    className='header__user-avatar'
+                    src='./assets/images/testimonial-1.png'
+                  ></img>
+                </Link>
+              )}
             </div>
             <div className='header__toggle' onClick={handleShowNavbar}>
               <ion-icon name='menu-outline'></ion-icon>
