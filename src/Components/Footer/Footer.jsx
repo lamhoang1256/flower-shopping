@@ -23,7 +23,10 @@ export const Footer = () => {
           </ul>
           {/* FOOTER PAYMENT */}
           <div>
-            <img src='./assets/images/footer-payment.png' alt='' />
+            <img
+              src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/footer-payment.png`}
+              alt=''
+            />
           </div>
         </div>
       </div>

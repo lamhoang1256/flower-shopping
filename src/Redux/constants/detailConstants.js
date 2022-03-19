@@ -1,0 +1,3 @@
+export const DETAIL_REQUEST = "DETAIL_REQUEST";
+export const DETAIL_SUCCESS = "DETAIL_SUCESS";
+export const DETAIL_FAIL = "DETAIL_FAIL";

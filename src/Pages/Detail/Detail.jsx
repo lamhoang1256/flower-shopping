@@ -1,38 +1,67 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { detailProduct } from "../../Redux/actions/detailAction";
+import { Loading } from "../../Components/Loading/Loading";
+
 import "./detail.scss";
 
 export const Detail = () => {
+  const params = useParams();
+  const idDetailProduct = params.id;
+  const dispatch = useDispatch();
+  const productDetailState = useSelector((state) => state.detailReducer);
+  const { loading, error, dataDetail } = productDetailState;
+  useEffect(() => {
+    dispatch(detailProduct(idDetailProduct));
+  }, [dispatch, params]);
+
   return (
     <div className='detail'>
       <div className='container'>
-        <div className='detail__container'>
-          <div className='detail__images'>
-            <img src='../assets/images/img-2.jpg' alt='' />
+        {loading ? (
+          <Loading></Loading>
+        ) : error ? (
+          <h1>Error</h1>
+        ) : (
+          <div className='detail__container'>
+            <div className='detail__images'>
+              <img
+                src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/data/${dataDetail.image}`}
+                alt=''
+              />
+            </div>
+            <div className='detail__content'>
+              <h3 className='detail__name'>{dataDetail.name}</h3>
+              <div className='detail__price'>${dataDetail.price}</div>
+              <div className='detail__desc'>
+                <span>+ </span>
+                {dataDetail.description}
+              </div>
+              <div className='detail__status'>
+                + Status: <span>{dataDetail.countInStock > 0 ? "In stock" : "Out stock"}</span>
+              </div>
+              <div className='detail__reviews'>
+                + Reviews: <span>{dataDetail.numReviews} reviews</span>
+              </div>
+              {dataDetail.countInStock > 0 && (
+                <div className='detail__quantity'>
+                  <span>+ Quantity: </span>
+                  <select name='quantity' className='detail__quantity-select'>
+                    {[...Array(dataDetail.countInStock).keys()].map((x, index) => {
+                      return (
+                        <option key={index} value={x + 1}>
+                          {x + 1}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </div>
+              )}
+              <button className='detail__add button button__sky'>Add to cart</button>
+            </div>
           </div>
-          <div className='detail__content'>
-            <h3 className='detail__name'>Rose Flower</h3>
-            <div className='detail__price'>$124</div>
-            <div className='detail__desc'>
-              <span>+ </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
-              cupiditate quaerat voluptates modi, quod repellendus tempore ea ad sequi quisquam
-            </div>
-            <div className='detail__status'>
-              + Status: <span>In stock</span>
-            </div>
-            <div className='detail__reviews'>
-              + Reviews: <span>4 reviews</span>
-            </div>
-            <div className='detail__quantity'>
-              <span>+ Quantity: </span>
-              <select name='quantity' className='detail__quantity-select'>
-                <option value='1'>1</option>
-                <option value='2'>2</option>
-                <option value='3'>3</option>
-              </select>
-            </div>
-            <button className='detail__add button button__sky'>Add to cart</button>
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

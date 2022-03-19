@@ -5,7 +5,19 @@
     padding: 50px 0 40px;
     display: grid;
     grid-template-columns: 0.5fr 1fr;
-    grid-gap: 0;
+    grid-gap: 20px 0;
+    @media screen and (max-width: 767.98px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  &__images {
+    img {
+      max-width: 90%;
+      border-radius: 8px;
+      @media screen and (max-width: 767.98px) {
+        max-width: 100%;
+      }
+    }
   }
   &__desc,
   &__status,

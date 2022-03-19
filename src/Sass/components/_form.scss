@@ -28,4 +28,11 @@
     height: 50px;
     width: 100%;
   }
+  &__error {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: #721c24;
+    background-color: #f8d7da;
+  }
 }
