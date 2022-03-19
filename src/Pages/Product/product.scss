@@ -1,5 +1,8 @@
 @import "../../Sass/variable";
 .product {
+  &__container {
+    min-height: 500px;
+  }
   &__list {
     padding: 60px 0;
     display: grid;
