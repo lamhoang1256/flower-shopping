@@ -28,7 +28,7 @@ export const Detail = () => {
             <div className='detail__images'>
               <img
                 src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/data/${dataDetail.image}`}
-                alt=''
+                alt={dataDetail.image}
               />
             </div>
             <div className='detail__content'>

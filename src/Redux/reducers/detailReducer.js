@@ -1,7 +1,6 @@
 import { DETAIL_REQUEST, DETAIL_SUCCESS, DETAIL_FAIL } from "../constants/detailConstants";
 
-const dataDetail = [];
-export const detailReducer = (state = { dataDetail }, action) => {
+export const detailReducer = (state = { dataDetail: [] }, action) => {
   switch (action.type) {
     case DETAIL_REQUEST:
       return { loading: true, dataDetail: [] };

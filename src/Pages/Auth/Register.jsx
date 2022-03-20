@@ -15,15 +15,8 @@ export const Register = () => {
     formState: { errors },
   } = useForm();
   // handle register
-  const userLogin = useSelector((state) => state.authReducer);
-  console.log(userLogin);
-  const { loading, error, dataRegister } = userLogin;
-  useEffect(() => {
-    if (dataRegister) {
-      navigate("/login");
-    }
-  }, [userLogin]);
-
+  const userRegister = useSelector((state) => state.registerReducer);
+  const { loading, error, dataRegister } = userRegister;
   const handleRegister = (data) => {
     dispatch(registerAction(data));
   };

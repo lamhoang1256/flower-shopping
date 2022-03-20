@@ -1,14 +1,36 @@
-import { REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAIL } from "../constants/authConstants";
+import {
+  REGISTER_REQUEST,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  LOGIN_REQUEST,
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  LOGOUT_USER,
+} from "../constants/authConstants";
 
-const dataRegister = null;
-export const authReducer = (state = { dataRegister }, action) => {
+export const registerReducer = (state = [], action) => {
   switch (action.type) {
     case REGISTER_REQUEST:
-      return { loading: true, dataRegister: [] };
+      return { loading: true };
     case REGISTER_SUCCESS:
-      return { loading: false, dataRegister: action.payload };
+      return { loading: false };
     case REGISTER_FAIL:
-      return { loading: false, dataRegister: action.payload };
+      return { loading: false };
+    default:
+      return state;
+  }
+};
+
+export const loginReducer = (state = { userInfo: [] }, action) => {
+  switch (action.type) {
+    case LOGIN_REQUEST:
+      return { loading: true };
+    case LOGIN_SUCCESS:
+      return { loading: false, userInfo: action.payload };
+    case LOGIN_FAIL:
+      return { loading: false, errorMessenger: "Invalid email or password" };
+    case LOGOUT_USER:
+      return {};
     default:
       return state;
   }

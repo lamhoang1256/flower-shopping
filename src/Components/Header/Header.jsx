@@ -1,13 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../Redux/actions/authAction";
 import { NavLink, Link } from "react-router-dom";
 import "./header.scss";
 
 export const Header = () => {
-  const [showNavbar, setShowNavbar] = useState(false);
+  const dispatch = useDispatch();
+  //change button sign in -> avatar if has been login
   const [isLogin, setIsLogin] = useState(true);
+  const userInfo = localStorage.getItem("userInfo") || null;
+  useEffect(() => {
+    if (userInfo) {
+      setIsLogin(false);
+    }
+  }, [userInfo]);
   //toggle navbar menu
+  const [showNavbar, setShowNavbar] = useState(false);
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
+  };
+  //handle logout
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    window.location.replace("/");
   };
 
   return (
@@ -65,10 +80,15 @@ export const Header = () => {
                 </Link>
               ) : (
                 <Link to='/profile'>
-                  <img
-                    className='header__user-avatar'
-                    src='./assets/images/testimonial-1.png'
-                  ></img>
+                  <div className='header__user-info'>
+                    <img
+                      className='header__user-avatar'
+                      src='./assets/images/testimonial-1.png'
+                    ></img>
+                    <div className='header__user-logout' onClick={handleLogout}>
+                      LOGOUT
+                    </div>
+                  </div>
                 </Link>
               )}
             </div>

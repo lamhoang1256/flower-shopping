@@ -1,8 +1,35 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { updateAction } from "../../Redux/actions/userAction";
 import "./profile.scss";
 
 export const Profile = () => {
+  const dispatch = useDispatch();
+  // toggle UI list order history or edit profile
   const [isOrder, setIsOrder] = useState(true);
+  // get user info from localStorage
+  const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem("userInfo")) || null);
+  const token = userInfo.token;
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  // handle update user profile
+  const handleUpdate = async (data) => {
+    await dispatch(updateAction(data, token));
+    setUserInfo(JSON.parse(localStorage.getItem("userInfo")));
+    // reset field input when update success
+    reset({
+      name: "",
+      email: "",
+      oldPassword: "",
+      password: "",
+    });
+  };
 
   return (
     <div className='profile'>
@@ -10,11 +37,15 @@ export const Profile = () => {
         <div className='profile__container'>
           {/* PROFILE - INFO */}
           <div className='profile__info'>
-            <img className='profile__avatar' src='./assets/images/testimonial-1.png' alt='' />
-            <h3 className='profile__name'>Huge</h3>
+            <img
+              className='profile__avatar'
+              src='./assets/images/testimonial-1.png'
+              alt='profile__avatar'
+            />
+            <h3 className='profile__name'>{userInfo && userInfo.name}</h3>
             <div className='profile__email'>
               <p>Email:</p>
-              <h3>huge@gmail.com</h3>
+              <h3>{userInfo && userInfo.email}</h3>
             </div>
             <button
               className={`profile__switch button ${isOrder ? "button__sky" : "button__primary"}`}
@@ -196,23 +227,53 @@ export const Profile = () => {
           ) : (
             <div className='profile__change'>
               {/* PROFILE - FORM */}
-              <form className='profile__form'>
+              <form className='profile__form' onSubmit={handleSubmit(handleUpdate)}>
                 <div className='profile__list'>
+                  {/* INPUT UPDATE - NAME */}
                   <div className='profile__item'>
-                    <h3>USERNAME</h3>
-                    <input type='text' className='profile__input' />
+                    <h3>FULL NAME</h3>
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='name'
+                      {...register("name")}
+                    />
+                    {errors.name?.type === "minLength" && (
+                      <div className='ui__error'>Minimum full name is 6 characters</div>
+                    )}
+                    {errors.name?.type === "maxLength" && (
+                      <div className='ui__error'>Maximum fullname is 40 characters </div>
+                    )}
                   </div>
+                  {/* INPUT UPDATE - EMAIL */}
                   <div className='profile__item'>
                     <h3>EMAIL</h3>
-                    <input type='text' className='profile__input' />
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='email'
+                      {...register("email", {
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        },
+                      })}
+                    />
+                    {errors.email?.type === "pattern" && (
+                      <div className='ui__error'>Email not invalid</div>
+                    )}
                   </div>
+                  {/* INPUT UPDATE - NEW PASSWORD */}
                   <div className='profile__item'>
                     <h3>NEW PASSWORD</h3>
-                    <input type='text' className='profile__input' />
-                  </div>
-                  <div className='profile__item'>
-                    <h3>CONFIRM PASSWORD</h3>
-                    <input type='text' className='profile__input' />
+                    <input
+                      type='text'
+                      className='profile__input'
+                      name='password'
+                      {...register("password", { maxLength: 14 })}
+                    />
+                    {errors.password?.type === "maxLength" && (
+                      <div className='ui__error'>Maximum old password is 14 characters </div>
+                    )}
                   </div>
                 </div>
                 <button type='submit' className='profile__button button button__primary'>
