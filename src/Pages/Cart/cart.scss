@@ -25,7 +25,6 @@
   &__image,
   &__quantity,
   &__subtotal {
-    // display: flex;
     flex-direction: column;
     justify-content: center;
   }
@@ -35,6 +34,10 @@
       overflow: hidden;
       white-space: nowrap;
       max-width: 200px;
+    }
+    &-title {
+      color: $pink-color;
+      font-weight: 500;
     }
   }
   &__image {

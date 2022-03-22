@@ -43,7 +43,9 @@ export const Cart = () => {
                     </Link>
                     <div className='cart__name'>
                       <p className='cart__label'>Name product</p>
-                      <Link to={`/product/${item._id}`}>{item.name}</Link>
+                      <Link to={`/product/${item._id}`} className='cart__name-title'>
+                        {item.name}
+                      </Link>
                     </div>
                     <div className='cart__price'>
                       <p className='cart__label'>Price:</p>

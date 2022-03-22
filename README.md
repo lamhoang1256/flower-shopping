@@ -27,3 +27,12 @@ Phase
 
 - Fetch Data from mongoDB to product, detail page
 - Finish basic logic Register page (validate form register, create new user DB, ...)
+
+### 20/03/2022
+
+- Finish logic Login, Profile page
+
+### 21/03/2022
+
+- Completed cart (add, remove)
+- Optimize logout

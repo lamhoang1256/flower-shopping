@@ -73,12 +73,16 @@ export const Detail = () => {
                   </select>
                 </div>
               )}
-              <button
-                className='detail__add button button__sky'
-                onClick={() => handleAddToCart({ ...dataDetail, count })}
-              >
-                Add to cart
-              </button>
+              {dataDetail.countInStock > 0 ? (
+                <button
+                  className='detail__add button button__sky'
+                  onClick={() => handleAddToCart({ ...dataDetail, count })}
+                >
+                  Add to cart
+                </button>
+              ) : (
+                ""
+              )}
             </div>
           </div>
         )}
