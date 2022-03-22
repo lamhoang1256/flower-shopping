@@ -1,9 +1,24 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Breadcrumb } from "../../Components/Breadcrumb/Breadcrumb";
+import { removeCartAction } from "../../Redux/actions/cartAction";
 import "./cart.scss";
 
 export const Cart = () => {
+  const dispatch = useDispatch();
+  const { cartItems } = useSelector((state) => state.cartReducer);
+  // calculation total price all product
+  let total;
+  if (cartItems) {
+    total = cartItems.reduce(function (previousValue, currentValue) {
+      return previousValue + currentValue.price * currentValue.count;
+    }, 0);
+  }
+  // handle cart remove product
+  const handleCartRemove = (idProduct) => {
+    dispatch(removeCartAction(idProduct));
+  };
   return (
     <div className='cart'>
       {/* CART - BREADCRUMB */}
@@ -11,98 +26,56 @@ export const Cart = () => {
       {/* CART - MAIN */}
       <div className='container'>
         <div className='cart__container'>
-          <div className='cart__total'>Total Cart Products(4)</div>
+          <div className='cart__total'>Total Cart Products({cartItems.length})</div>
           {/* CART - LIST */}
           <div className='cart__list'>
-            <div className='cart__item'>
-              <div className='cart__remove'>
-                <ion-icon name='close'></ion-icon>
-              </div>
-              <div className='cart__image'>
-                <img src='./assets/images/img-1.jpg' alt='' />
-              </div>
-              <div className='cart__name'>
-                <p className='cart__label'>Name product</p>
-                <p>Rose Flower</p>
-              </div>
-              <div className='cart__price'>
-                <p className='cart__label'>Price:</p>
-                <p>$33</p>
-              </div>
-              <div className='cart__quantity'>
-                <p className='cart__label'>Quantity:</p>
-                <select name='quantity' className='detail__quantity-select'>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                </select>
-              </div>
-              <div className='cart__subtotal'>
-                <p className='cart__label'>Subtotal:</p>
-                <h4>$124</h4>
-              </div>
-            </div>
-            <div className='cart__item'>
-              <div className='cart__remove'>
-                <ion-icon name='close'></ion-icon>
-              </div>
-              <div className='cart__image'>
-                <img src='./assets/images/img-1.jpg' alt='' />
-              </div>
-              <div className='cart__name'>
-                <p className='cart__label'>Name product</p>
-                <p>Rose Flower</p>
-              </div>
-              <div className='cart__price'>
-                <p className='cart__label'>Price:</p>
-                <p>$33</p>
-              </div>
-              <div className='cart__quantity'>
-                <p className='cart__label'>Quantity:</p>
-                <select name='quantity' className='detail__quantity-select'>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                </select>
-              </div>
-              <div className='cart__subtotal'>
-                <p className='cart__label'>Subtotal:</p>
-                <h4>$124</h4>
-              </div>
-            </div>
-            <div className='cart__item'>
-              <div className='cart__remove'>
-                <ion-icon name='close'></ion-icon>
-              </div>
-              <div className='cart__image'>
-                <img src='./assets/images/img-1.jpg' alt='' />
-              </div>
-              <div className='cart__name'>
-                <p className='cart__label'>Name product</p>
-                <p>Rose Flower</p>
-              </div>
-              <div className='cart__price'>
-                <p className='cart__label'>Price:</p>
-                <p>$33</p>
-              </div>
-              <div className='cart__quantity'>
-                <p className='cart__label'>Quantity:</p>
-                <select name='quantity' className='detail__quantity-select'>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                </select>
-              </div>
-              <div className='cart__subtotal'>
-                <p className='cart__label'>Subtotal:</p>
-                <h4>$124</h4>
-              </div>
-            </div>
+            {cartItems.length !== 0
+              ? cartItems.map((item) => (
+                  <div className='cart__item' key={item._id}>
+                    <div className='cart__remove' onClick={() => handleCartRemove(item._id)}>
+                      <ion-icon name='close'></ion-icon>
+                    </div>
+                    <Link to={`/product/${item._id}`} className='cart__image'>
+                      <img
+                        src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/data/${item.image}`}
+                        alt=''
+                      />
+                    </Link>
+                    <div className='cart__name'>
+                      <p className='cart__label'>Name product</p>
+                      <Link to={`/product/${item._id}`}>{item.name}</Link>
+                    </div>
+                    <div className='cart__price'>
+                      <p className='cart__label'>Price:</p>
+                      <p>{item.price}</p>
+                    </div>
+                    <div className='cart__quantity'>
+                      <p className='cart__label'>Quantity:</p>
+                      {/* <select name='quantity' className='detail__quantity-select'>
+                        {[...Array(item.countInStock).keys()].map((x) => (
+                          <option
+                            value={x + 1}
+                            defaultValue={item.count === x ? true : false}
+                            key={x}
+                          >
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select> */}
+                      <p>{item.count}</p>
+                    </div>
+                    <div className='cart__subtotal'>
+                      <p className='cart__label'>Subtotal:</p>
+                      <h4>${`${item.price * item.count}`}</h4>
+                    </div>
+                  </div>
+                ))
+              : "Chưa có sản phẩm "}
           </div>
           {/* CART - TOTAL */}
           <div className='cart__total'>
             <p>TOTAL :</p>
-            <h3>$1234</h3>
+            <h3>{total ? `$${total}` : 0}</h3>
           </div>
           {/* CART - ACTION */}
           <div className='cart__action'>

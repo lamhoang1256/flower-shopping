@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../Redux/actions/authAction";
 import { NavLink, Link } from "react-router-dom";
 import "./header.scss";
@@ -14,6 +14,8 @@ export const Header = () => {
       setIsLogin(false);
     }
   }, [userInfo]);
+  //show count product in cart items
+  const countProduct = useSelector((state) => state.cartReducer).cartItems.length;
   //toggle navbar menu
   const [showNavbar, setShowNavbar] = useState(false);
   const handleShowNavbar = () => {
@@ -71,7 +73,7 @@ export const Header = () => {
             </div>
             <Link to='/cart' className='header__cart'>
               <ion-icon name='cart-outline'></ion-icon>
-              <div className='header__cart-count'>2</div>
+              <div className='header__cart-count'>{countProduct}</div>
             </Link>
             <div className='header__user'>
               {isLogin ? (

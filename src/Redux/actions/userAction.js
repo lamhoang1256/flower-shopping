@@ -7,7 +7,6 @@ import {
 
 export const updateAction = (dataDispatch, token) => async (dispatch) => {
   try {
-    console.log(token);
     dispatch({ type: USER_UPDATE_REQUEST });
     const { data } = await axios.put("/api/users/profile", dataDispatch, {
       headers: {

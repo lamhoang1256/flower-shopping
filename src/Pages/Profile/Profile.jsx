@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateAction } from "../../Redux/actions/userAction";
 import "./profile.scss";
 
 export const Profile = () => {
   const dispatch = useDispatch();
+  const { loading, errorMessenger } = useSelector((state) => state.userReducer);
   // toggle UI list order history or edit profile
   const [isOrder, setIsOrder] = useState(true);
   // get user info from localStorage
   const [userInfo, setUserInfo] = useState(JSON.parse(localStorage.getItem("userInfo")) || null);
-  const token = userInfo.token;
+  const token = (userInfo && userInfo.token) || null;
   // react hook form
   const {
     register,
@@ -266,7 +267,7 @@ export const Profile = () => {
                   <div className='profile__item'>
                     <h3>NEW PASSWORD</h3>
                     <input
-                      type='text'
+                      type='password'
                       className='profile__input'
                       name='password'
                       {...register("password", { maxLength: 14 })}
@@ -276,6 +277,7 @@ export const Profile = () => {
                     )}
                   </div>
                 </div>
+                {errorMessenger && <div className='ui__error'>Error update </div>}
                 <button type='submit' className='profile__button button button__primary'>
                   UPDATE PROFILE
                 </button>

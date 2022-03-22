@@ -1,17 +1,26 @@
-import React, { useEffect, useRef } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { detailProduct } from "../../Redux/actions/detailAction";
 import { Loading } from "../../Components/Loading/Loading";
 
 import "./detail.scss";
+import { cartAction } from "../../Redux/actions/cartAction";
 
 export const Detail = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const params = useParams();
   const idDetailProduct = params.id;
-  const dispatch = useDispatch();
+  const [count, setCount] = useState(1);
+  // get data
   const productDetailState = useSelector((state) => state.detailReducer);
   const { loading, error, dataDetail } = productDetailState;
+  // handle add to Cart
+  const handleAddToCart = (product) => {
+    dispatch(cartAction(product));
+    navigate("/cart");
+  };
   useEffect(() => {
     dispatch(detailProduct(idDetailProduct));
   }, [dispatch, params]);
@@ -47,7 +56,13 @@ export const Detail = () => {
               {dataDetail.countInStock > 0 && (
                 <div className='detail__quantity'>
                   <span>+ Quantity: </span>
-                  <select name='quantity' className='detail__quantity-select'>
+                  <select
+                    name='quantity'
+                    className='detail__quantity-select'
+                    onChange={(e) => {
+                      setCount(Number(e.target.value));
+                    }}
+                  >
                     {[...Array(dataDetail.countInStock).keys()].map((x, index) => {
                       return (
                         <option key={index} value={x + 1}>
@@ -58,7 +73,12 @@ export const Detail = () => {
                   </select>
                 </div>
               )}
-              <button className='detail__add button button__sky'>Add to cart</button>
+              <button
+                className='detail__add button button__sky'
+                onClick={() => handleAddToCart({ ...dataDetail, count })}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         )}

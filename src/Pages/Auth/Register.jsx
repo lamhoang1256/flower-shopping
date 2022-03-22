@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { registerAction } from "../../Redux/actions/authAction";
 import "./auth.scss";
 
 export const Register = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   // react hook form
   const {
@@ -15,8 +14,6 @@ export const Register = () => {
     formState: { errors },
   } = useForm();
   // handle register
-  const userRegister = useSelector((state) => state.registerReducer);
-  const { loading, error, dataRegister } = userRegister;
   const handleRegister = (data) => {
     dispatch(registerAction(data));
   };

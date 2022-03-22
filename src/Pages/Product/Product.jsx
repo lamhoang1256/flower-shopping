@@ -1,15 +1,22 @@
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Breadcrumb } from "../../Components/Breadcrumb/Breadcrumb";
 import { Loading } from "../../Components/Loading/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import { listProduct } from "../../Redux/actions/productAction";
 import "./product.scss";
+import { cartAction } from "../../Redux/actions/cartAction";
 
 export const Product = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productReducer);
   const { loading, error, dataProducts } = productList;
+  // handle add product to cart
+  const handleAddToCart = (product) => {
+    dispatch(cartAction(product));
+    navigate("/cart");
+  };
 
   useEffect(() => {
     dispatch(listProduct());
@@ -43,9 +50,25 @@ export const Product = () => {
                           </Link>
                           <div className='product__bottom'>
                             <div className='product__price'>${product.price}</div>
-                            <button className='product__buy button button__primary'>
-                              Add to cart
-                            </button>
+                            {product.countInStock > 0 ? (
+                              <button
+                                className='product__buy button button__primary'
+                                onClick={() =>
+                                  handleAddToCart(
+                                    { ...product, count: 1 }
+                                    // _id: product._id,
+                                    // name: product.name,
+                                    // price: product.price,
+                                    // count: 1,
+                                    // countInStock: product.countInStock,
+                                  )
+                                }
+                              >
+                                Add to cart
+                              </button>
+                            ) : (
+                              "Out stock"
+                            )}
                           </div>
                         </div>
                       </div>
