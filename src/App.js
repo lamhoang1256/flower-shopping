@@ -9,10 +9,10 @@ import { Cart } from "./Pages/Cart/Cart";
 import { Checkout } from "./Pages/Checkout/Checkout";
 import { Profile } from "./Pages/Profile/Profile";
 import { Footer } from "./Components/Footer/Footer";
-
-import "./Sass/app.scss";
 import { Shipping } from "./Pages/Shipping/Shipping";
 import { Order } from "./Pages/Order/Order";
+import { Payment } from "./Pages/Payment/Payment";
+import "./Sass/app.scss";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
         <Route path='/cart' element={<Cart></Cart>}></Route>
         <Route path='/profile' element={<Profile></Profile>}></Route>
         <Route path='/shipping' element={<Shipping></Shipping>}></Route>
+        <Route path='/payment' element={<Payment></Payment>}></Route>
         <Route path='/checkout' element={<Checkout></Checkout>}></Route>
         <Route path='/order' element={<Order></Order>}></Route>
       </Routes>

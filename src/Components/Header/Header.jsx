@@ -23,7 +23,7 @@ export const Header = () => {
   };
   //handle logout
   const handleLogout = () => {
-    dispatch(logoutAction());
+    dispatch(logoutAction);
     window.location.replace("/");
   };
 

@@ -8,7 +8,7 @@ import {
   LOGOUT_USER,
 } from "../constants/authConstants";
 
-export const registerReducer = (state = [], action) => {
+export const registerReducer = (state = null, action) => {
   switch (action.type) {
     case REGISTER_REQUEST:
       return { loading: true };
@@ -21,7 +21,7 @@ export const registerReducer = (state = [], action) => {
   }
 };
 
-export const loginReducer = (state = { userInfo: [] }, action) => {
+export const loginReducer = (state = null, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { loading: true };

@@ -84,7 +84,7 @@ export const Cart = () => {
             <Link to='/product'>
               <button className='button button__sky'>Shop more</button>
             </Link>
-            <Link to='/checkout'>
+            <Link to='/shipping'>
               <button className='button button__primary'>Checkout</button>
             </Link>
           </div>

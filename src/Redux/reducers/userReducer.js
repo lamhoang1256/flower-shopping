@@ -4,7 +4,13 @@ import {
   USER_UPDATE_FAIL,
 } from "../constants/userConstants";
 
-export const userReducer = (state = {}, action) => {
+export const userReducer = (
+  state = {
+    userInfo: JSON.parse(localStorage.getItem("userInfo")) || null,
+    shippingAddress: JSON.parse(localStorage.getItem("shippingAddress")) || null,
+  },
+  action
+) => {
   switch (action.type) {
     case USER_UPDATE_REQUEST:
       return { loading: true };

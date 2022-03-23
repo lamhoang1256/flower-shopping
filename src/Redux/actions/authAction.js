@@ -46,9 +46,14 @@ export const loginAction = (info) => async (dispatch) => {
   }
 };
 
-export const logoutAction = (dispatch) => {
-  dispatch({ type: LOGOUT_USER });
-  localStorage.removeItem("userInfo");
-  localStorage.removeItem("cart");
-  localStorage.removeItem("shipping");
+export const logoutAction = async (dispatch) => {
+  try {
+    console.log("logout action");
+    dispatch({ type: LOGOUT_USER });
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("cart");
+    localStorage.removeItem("shipping");
+  } catch (err) {
+    console.log(err);
+  }
 };

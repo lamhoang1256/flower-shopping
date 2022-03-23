@@ -27,5 +27,5 @@ export const updateAction = (dataDispatch, token) => async (dispatch) => {
 
 export const shippingAction = (data) => (dispatch) => {
   dispatch({ type: SHIPPING_SAVE });
-  localStorage.setItem("shipping", JSON.stringify(data));
+  localStorage.setItem("shippingAddress", JSON.stringify(data));
 };

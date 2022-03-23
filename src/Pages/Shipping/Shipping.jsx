@@ -1,11 +1,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { shippingAction } from "../../Redux/actions/userAction";
 import "./shipping.scss";
 
 export const Shipping = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -14,6 +16,7 @@ export const Shipping = () => {
   // handle shipping
   const handleShipping = (data) => {
     dispatch(shippingAction(data));
+    navigate("/payment");
   };
 
   return (
