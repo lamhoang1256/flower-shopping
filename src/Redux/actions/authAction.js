@@ -46,8 +46,9 @@ export const loginAction = (info) => async (dispatch) => {
   }
 };
 
-export const logoutAction = () => (dispatch) => {
+export const logoutAction = (dispatch) => {
   dispatch({ type: LOGOUT_USER });
   localStorage.removeItem("userInfo");
   localStorage.removeItem("cart");
+  localStorage.removeItem("shipping");
 };

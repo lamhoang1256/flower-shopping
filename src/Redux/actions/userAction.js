@@ -3,6 +3,7 @@ import {
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  SHIPPING_SAVE,
 } from "../constants/userConstants";
 
 export const updateAction = (dataDispatch, token) => async (dispatch) => {
@@ -22,4 +23,9 @@ export const updateAction = (dataDispatch, token) => async (dispatch) => {
       payload: err.response && err.response.data.message ? err.response.data.message : err.message,
     });
   }
+};
+
+export const shippingAction = (data) => (dispatch) => {
+  dispatch({ type: SHIPPING_SAVE });
+  localStorage.setItem("shipping", JSON.stringify(data));
 };
