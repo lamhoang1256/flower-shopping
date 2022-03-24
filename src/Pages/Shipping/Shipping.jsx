@@ -16,7 +16,7 @@ export const Shipping = () => {
   // handle shipping
   const handleShipping = (data) => {
     dispatch(shippingAction(data));
-    navigate("/payment");
+    navigate("/order");
   };
 
   return (
@@ -48,9 +48,9 @@ export const Shipping = () => {
               type='text'
               placeholder='Enter postal code'
               className='ui__input'
-              {...register("postalcode", { required: true })}
+              {...register("postalCode", { required: true })}
             />
-            {errors.postalcode?.type === "required" && (
+            {errors.postalCode?.type === "required" && (
               <div className='ui__error'>Postal code is required</div>
             )}
             {/* FORM COUNTRY */}

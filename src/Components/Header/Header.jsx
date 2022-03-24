@@ -85,7 +85,7 @@ export const Header = () => {
                   <div className='header__user-info'>
                     <img
                       className='header__user-avatar'
-                      src='./assets/images/testimonial-1.png'
+                      src={`${process.env.REACT_APP_PUBLIC_URL}/assets/images/testimonial-1.png`}
                     ></img>
                     <div className='header__user-logout' onClick={handleLogout}>
                       LOGOUT

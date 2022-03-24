@@ -21,7 +21,7 @@ export const registerReducer = (state = null, action) => {
   }
 };
 
-export const loginReducer = (state = null, action) => {
+export const loginReducer = (state = {}, action) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return { loading: true };

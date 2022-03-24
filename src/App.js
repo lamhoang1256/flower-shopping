@@ -11,6 +11,7 @@ import { Profile } from "./Pages/Profile/Profile";
 import { Footer } from "./Components/Footer/Footer";
 import { Shipping } from "./Pages/Shipping/Shipping";
 import { Order } from "./Pages/Order/Order";
+import { OrderDetail } from "./Pages/Order/OrderDetail";
 import { Payment } from "./Pages/Payment/Payment";
 import "./Sass/app.scss";
 
@@ -30,6 +31,7 @@ function App() {
         <Route path='/shipping' element={<Shipping></Shipping>}></Route>
         <Route path='/payment' element={<Payment></Payment>}></Route>
         <Route path='/checkout' element={<Checkout></Checkout>}></Route>
+        <Route path='/order/:idOrder' element={<OrderDetail></OrderDetail>}></Route>
         <Route path='/order' element={<Order></Order>}></Route>
       </Routes>
       <Footer></Footer>

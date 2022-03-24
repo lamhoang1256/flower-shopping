@@ -1,4 +1,4 @@
-import { ADD_CART_SUCCESS, REMOVE_CART_SUCCESS } from "../constants/cartConstants";
+import { ADD_CART_SUCCESS, REMOVE_CART_SUCCESS, CLEAR_CART } from "../constants/cartConstants";
 
 const initialState = JSON.parse(localStorage.getItem("cart")) || [];
 export const cartReducer = (state = { cartItems: initialState }, action) => {
@@ -21,7 +21,8 @@ export const cartReducer = (state = { cartItems: initialState }, action) => {
     case REMOVE_CART_SUCCESS:
       const idProduct = action.payload;
       return { ...state, cartItems: state.cartItems.filter((x) => x._id !== idProduct) };
-
+    case CLEAR_CART:
+      return { ...state, cartItems: [] };
     default:
       return state;
   }

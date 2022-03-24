@@ -8,7 +8,7 @@ import "./auth.scss";
 export const Login = () => {
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.loginReducer);
-  const { loading, errorMessenger, dataLogin } = userLogin;
+  const { errorMessenger } = userLogin;
   // react hook form
   const {
     register,

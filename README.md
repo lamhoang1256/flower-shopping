@@ -36,3 +36,7 @@ Phase
 
 - Completed cart (add, remove)
 - Optimize logout
+
+### 23/03/2022
+
+- Fix logout + completed logic shipping, order page
